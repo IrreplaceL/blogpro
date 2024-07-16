@@ -1,11 +1,14 @@
 package com.irreplace.controller;
 
+import com.irreplace.domain.entity.Article;
 import com.irreplace.service.ArticleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import lombok.extern.slf4j.Slf4j;
+
+import java.util.List;
+
 
 /**
  * @author Me
@@ -19,10 +22,10 @@ import lombok.extern.slf4j.Slf4j;
 public class ArticleController {
     @Autowired
     private ArticleService articleService;
-    @GetMapping("/111")
-    public Object test(){
-        articleService.list()
 
-            return "11111";
+    @GetMapping("/111")
+    public String test(){
+      List<Article>  list= articleService.list();
+            return list.toString();
     }
 }

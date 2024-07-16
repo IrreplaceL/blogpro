@@ -43,7 +43,7 @@ http://maven.apache.org/xsd/maven-4.0.0.xsd">
             <dependency>
                 <groupId>com.baomidou</groupId>
                 <artifactId>mybatis-plus-boot-starter</artifactId>
-                <version>3.4.3</version>
+                <version>3.5.7</version>
             </dependency>
             <!--阿里云OSS-->
             <dependency>

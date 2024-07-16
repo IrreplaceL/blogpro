@@ -1,5 +1,8 @@
 package com.irreplace.service.impl;
 
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.irreplace.domain.entity.Article;
+import com.irreplace.mapper.ArticleMapper;
 import com.irreplace.service.ArticleService;
 import org.springframework.stereotype.Service;
 
@@ -12,6 +15,8 @@ import org.springframework.stereotype.Service;
 
 
 @Service
-public class ArticleServiceImpl implements ArticleService {
+public class ArticleServiceImpl extends ServiceImpl<ArticleMapper, Article> implements ArticleService {
+
+
 
 }
