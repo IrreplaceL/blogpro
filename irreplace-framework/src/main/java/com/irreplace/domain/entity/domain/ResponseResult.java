@@ -1,4 +1,4 @@
-package com.irreplace.domain.entity.com.irreplace.domain;
+package com.irreplace.domain.entity.domain;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.irreplace.enums.AppHttpCodeEnum;
