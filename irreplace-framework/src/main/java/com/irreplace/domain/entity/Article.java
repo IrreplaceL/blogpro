@@ -1,10 +1,12 @@
 package com.irreplace.domain.entity;
 
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.experimental.Accessors;
 
 import java.util.Date;
 
@@ -19,6 +21,7 @@ import java.util.Date;
 @AllArgsConstructor
 @NoArgsConstructor
 @TableName("irr_article")
+@Accessors(chain = true)  //set方法同步返回该实体对象
 public class Article {
     private static final long serialVersionUID = 633836125669055427L;
     @TableId
@@ -39,6 +42,8 @@ public class Article {
      * 所属分类id
      */
     private Long categoryId;
+    @TableField(exist = false)  //表示该字段不存在于数据表中
+    private String categoryName;
     /**
      * 缩略图
      */

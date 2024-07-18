@@ -1,5 +1,6 @@
 package com.irreplace.domain.vo;
 
+import com.baomidou.mybatisplus.annotation.TableId;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -7,22 +8,17 @@ import lombok.NoArgsConstructor;
 /**
  * @author Me
  * @version 1.0
- * @date 2024/7/17 16:29
- * @Description:需响应回前端的字段
+ * @date 2024/7/18 12:48
+ * @Description:文章分类
  */
-
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class HotArticleVo {
+public class CategoryVo {
+
     private Long id;
-    /**
-     * 标题
-     */
-    private String title;
-    /**
-     * 所属分类id
-     */
-    private Long categoryId;
+
+    //分类名
+    private String name;
 }
