@@ -114,6 +114,6 @@ public class ArticleServiceImpl extends ServiceImpl<ArticleMapper, Article> impl
         if(category != null)
             articleDetailVo.setCategoryName(category.getName());
         //封装响应返回
-        return ResponseResult.successResult(article);
+        return ResponseResult.successResult(articleDetailVo);
     }
 }
