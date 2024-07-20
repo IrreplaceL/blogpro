@@ -1,13 +1,11 @@
 package com.irreplace.domain.entity;
 import java.util.Date;
 
-import com.baomidou.mybatisplus.annotation.TableField;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
-import lombok.experimental.Accessors;
 
 /**
  * 分类表(Category)表实体类

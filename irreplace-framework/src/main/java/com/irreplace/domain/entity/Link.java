@@ -1,6 +1,5 @@
 package com.irreplace.domain.entity;
 import java.util.Date;
-import java.io.Serializable;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

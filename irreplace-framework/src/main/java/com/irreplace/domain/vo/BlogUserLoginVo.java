@@ -7,17 +7,14 @@ import lombok.NoArgsConstructor;
 /**
  * @author Me
  * @version 1.0
- * @date 2024/7/18 12:48
- * @Description:文章分类
+ * @date 2024/7/20 12:52
+ * @Description:
  */
 
 @Data
-@AllArgsConstructor
 @NoArgsConstructor
-public class CategoryVo {
-
-    private Long id;
-
-    //分类名
-    private String name;
+@AllArgsConstructor
+public class BlogUserLoginVo {
+    private String token;
+    private UserInfoVo userInfo;
 }
