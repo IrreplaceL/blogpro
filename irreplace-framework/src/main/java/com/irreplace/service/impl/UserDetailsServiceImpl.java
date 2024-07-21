@@ -16,8 +16,7 @@ import java.util.Objects;
  * @author Me
  * @version 1.0
  * @date 2024/7/19 17:22
- * @Description:重写UserDetailsService
- * loadUserByUsername最终返回到BlogLoginServiceImpl
+ * @Description:重写UserDetailsService* loadUserByUsername最终返回到BlogLoginServiceImpl，在这里发出向数据库查询操作
  */
 @Service
 public class UserDetailsServiceImpl implements UserDetailsService {
