@@ -55,11 +55,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
                 // 对于登录接口 允许匿名访问
                 .antMatchers("/login").anonymous()
-             //用于测试登陆校验
+                    //用于测试登陆校验
                   .antMatchers("/link/getAllLink").authenticated()
+                .antMatchers("/logout").authenticated()
                 // 除上面外的所有请求全部不需要认证即可访问
                 .anyRequest().permitAll();
-        http.logout().disable();
+        http.logout().disable();//禁用默认退出接口
         http.addFilterBefore(jwtAuthenticationTokenFilter, UsernamePasswordAuthenticationFilter.class);
                 //允许跨域
         http.cors();

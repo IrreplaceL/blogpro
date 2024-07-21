@@ -19,7 +19,7 @@ import java.io.IOException;
  * @author Me
  * @version 1.0
  * @date 2024/7/21 16:15
- * @Description:授权接口实现类
+ * @Description:授权接口实现类,未通过授权或认证阶段
  */
 @Component
 public class AuthenticationEntryPointImpl implements AuthenticationEntryPoint {
