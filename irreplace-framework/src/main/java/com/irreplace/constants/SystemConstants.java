@@ -21,5 +21,9 @@ public class SystemConstants
      * 分类状态是正常的
      */
     public static final String Category_STATUS_NORMAL = "0";
+    /**
+     * 友链的状态是正常的
+     */
     public static  final String Link_STATUS_NORMAL = "0";
+    public static  final Long Comment_ID_isROOTID = -1L;
 }
