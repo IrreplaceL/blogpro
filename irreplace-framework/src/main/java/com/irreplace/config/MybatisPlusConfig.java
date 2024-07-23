@@ -27,4 +27,5 @@ public class MybatisPlusConfig {
                 PaginationInnerInterceptor());
         return mybatisPlusInterceptor;
     }
+
 }

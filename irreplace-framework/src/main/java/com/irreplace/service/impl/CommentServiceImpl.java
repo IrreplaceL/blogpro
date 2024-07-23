@@ -7,12 +7,15 @@ import com.irreplace.domain.entity.Comment;
 import com.irreplace.domain.entity.domain.ResponseResult;
 import com.irreplace.domain.vo.CommentVo;
 import com.irreplace.domain.vo.PageVo;
+import com.irreplace.enums.AppHttpCodeEnum;
+import com.irreplace.exception.SystemException;
 import com.irreplace.mapper.CommentMapper;
 import com.irreplace.service.CommentService;
 import com.irreplace.service.UserService;
 import com.irreplace.utils.BeanCopyUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
 
 import java.util.List;
 
@@ -34,6 +37,7 @@ public class CommentServiceImpl extends ServiceImpl<CommentMapper, Comment> impl
         commentLambdaQueryWrapper.eq(Comment::getArticleId,articleId);
         //根评论 rootId为-1
         commentLambdaQueryWrapper.eq(Comment::getRootId, SystemConstants.Comment_ID_isROOTID);
+        commentLambdaQueryWrapper.orderByDesc(Comment::getCreateTime);
         //分页查询
         Page<Comment> commentPage = new Page<>(pageNum,pageSize);
         page(commentPage,commentLambdaQueryWrapper);
@@ -46,6 +50,16 @@ public class CommentServiceImpl extends ServiceImpl<CommentMapper, Comment> impl
         }
         //返回的结果是一个分页PageVo
         return ResponseResult.successResult(new PageVo(commentVoList,commentPage.getTotal()));
+    }
+
+    @Override
+    public ResponseResult addComment(Comment comment) {
+        //对评论做一些判断，如评论内容不能为空
+        if (!StringUtils.hasText(comment.getContent())){
+            throw new SystemException(AppHttpCodeEnum.COMMENT_CONTENT_ISNULL);
+        }
+        save(comment);
+        return ResponseResult.successResult();
     }
 
     private List<CommentVo> getChildrend(Long id) {
