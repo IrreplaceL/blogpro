@@ -10,7 +10,7 @@ import com.irreplace.domain.entity.domain.ResponseResult;
  * @since 2024-07-21 22:06:25
  */
 public interface CommentService extends IService<Comment> {
-    ResponseResult commentList(Long articleId, Integer pageNum, Integer pageSize);
+    ResponseResult commentList(String commentType, Long articleId, Integer pageNum, Integer pageSize);
 
     ResponseResult addComment(Comment comment);
 }

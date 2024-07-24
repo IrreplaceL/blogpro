@@ -26,4 +26,6 @@ public class SystemConstants
      */
     public static  final String Link_STATUS_NORMAL = "0";
     public static  final Long Comment_ID_isROOTID = -1L;
+    public static final String COMMENT_TYPE_LINK ="1";
+    public static final String COMMENT_TYPE_ARTICLE = "0";
 }

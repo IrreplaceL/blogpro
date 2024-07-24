@@ -1,5 +1,6 @@
 package com.irreplace.controller;
 
+import com.irreplace.constants.SystemConstants;
 import com.irreplace.domain.entity.Comment;
 import com.irreplace.domain.entity.domain.ResponseResult;
 import com.irreplace.service.CategoryService;
@@ -20,10 +21,14 @@ public class CommentController {
     private CommentService commentService;
     @GetMapping("/commentList")
     public ResponseResult commentList(Long articleId,Integer pageNum,Integer pageSize){
-      return   commentService.commentList(articleId,pageNum,pageSize);
+      return   commentService.commentList(SystemConstants.COMMENT_TYPE_ARTICLE,articleId,pageNum,pageSize);
     }
     @PostMapping
     public ResponseResult addComment(@RequestBody Comment comment){
         return commentService.addComment(comment);
+    }
+    @GetMapping ("/linkCommentList")
+    public ResponseResult linkCommentList(Integer pageNum,Integer pageSize){
+        return  commentService.commentList(SystemConstants.COMMENT_TYPE_LINK,null,pageNum,pageSize);
     }
 }

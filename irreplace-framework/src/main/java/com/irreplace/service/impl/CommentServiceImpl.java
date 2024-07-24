@@ -30,14 +30,17 @@ public class CommentServiceImpl extends ServiceImpl<CommentMapper, Comment> impl
    @Autowired
    private UserService userService;
     @Override
-    public ResponseResult commentList(Long articleId, Integer pageNum, Integer pageSize) {
+    public ResponseResult commentList(String commentType, Long articleId, Integer pageNum, Integer pageSize) {
         //查询对应文章的根评论
         LambdaQueryWrapper<Comment> commentLambdaQueryWrapper = new LambdaQueryWrapper<>();
         //对articleId进行判断
-        commentLambdaQueryWrapper.eq(Comment::getArticleId,articleId);
+        commentLambdaQueryWrapper.eq(SystemConstants.COMMENT_TYPE_ARTICLE.equals(articleId),
+                Comment::getArticleId,articleId);
         //根评论 rootId为-1
         commentLambdaQueryWrapper.eq(Comment::getRootId, SystemConstants.Comment_ID_isROOTID);
         commentLambdaQueryWrapper.orderByDesc(Comment::getCreateTime);
+        //判断是友链评论还是文章评论
+        commentLambdaQueryWrapper.eq(Comment::getType,commentType);
         //分页查询
         Page<Comment> commentPage = new Page<>(pageNum,pageSize);
         page(commentPage,commentLambdaQueryWrapper);
