@@ -19,7 +19,7 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(SystemException.class)
     public ResponseResult systemExceptionHandler(SystemException e){
     //打印异常信息
-        log.info("出现了异常，{}",e,e.getMessage(),e);
+        log.info("出现了异常，{}",e.getMessage(),e);
         return ResponseResult.errorResult(e.getCode(),e.getMsg());
     }
     @ExceptionHandler(Exception.class)
