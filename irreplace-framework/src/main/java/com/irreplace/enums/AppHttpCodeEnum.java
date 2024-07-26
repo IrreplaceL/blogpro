@@ -14,7 +14,8 @@ public enum AppHttpCodeEnum {
     REQUIRE_PASSWORD(504, "必需填写密码"),
     COMMENT_CONTENT_ISNULL(506,"评论不能为空"),
 
-    LOGIN_ERROR(505,"用户名或密码错误");
+    LOGIN_ERROR(505,"用户名或密码错误"),
+    FILE_TYPE_ERROR(400, "图片格式错误");
     int code;
     String msg;
     AppHttpCodeEnum(int code, String errorMessage){

@@ -12,4 +12,6 @@ import com.irreplace.domain.entity.domain.ResponseResult;
 
 public interface UserService extends IService<User> {
     ResponseResult userInfo();
+
+    ResponseResult updateUserInfo(User user);
 }

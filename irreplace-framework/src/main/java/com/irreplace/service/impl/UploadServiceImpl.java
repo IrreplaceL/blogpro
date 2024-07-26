@@ -2,6 +2,8 @@ package com.irreplace.service.impl;
 
 import com.baomidou.mybatisplus.core.toolkit.ObjectUtils;
 import com.irreplace.domain.entity.domain.ResponseResult;
+import com.irreplace.enums.AppHttpCodeEnum;
+import com.irreplace.exception.SystemException;
 import com.irreplace.service.UploadService;
 import com.irreplace.utils.AliOSSUtils;
 import lombok.NonNull;
@@ -34,6 +36,12 @@ public class UploadServiceImpl implements UploadService {
 
     @Override
     public ResponseResult uploadImg(@NonNull MultipartFile img) throws IOException {
+        //判断文件名
+        //获取原始文件名
+        String originalFilename = img.getOriginalFilename();
+        if(!(originalFilename.endsWith(".png")||originalFilename.endsWith(".jpg"))){
+            throw  new SystemException(AppHttpCodeEnum.FILE_TYPE_ERROR);
+        }
         if (ObjectUtils.isNull()) {
             //这个拦截似乎没有用，因为全都被注解@NonNull拦截了
             throw new RuntimeException("上传的图片不能为空！");

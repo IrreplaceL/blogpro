@@ -25,3 +25,10 @@ mybatis:
   configuration:
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
     map-underscore-to-camel-case: true
+aliyun:
+  oos:
+    #阿里云oos配置
+    endpoint: https://oss-cn-shenzhen.aliyuncs.com
+    accessKeyId: LTAI5tG3AzmVEQULkAwRKyMh
+    accessKeySecret: QzKyS1aPAzZKSH4luOiamXNjI15A5c
+    bucketName: web-milk
