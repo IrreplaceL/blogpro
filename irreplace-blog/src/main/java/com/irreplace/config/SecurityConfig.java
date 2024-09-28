@@ -21,29 +21,24 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
  * @Description:将重写的AuthenticationManager注入Bean容器
  */
 
+
 @Configuration
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
-    @Autowired
-    private AuthenticationEntryPoint authenticationEntryPoint;
-    @Autowired
-    private AccessDeniedHandler accessDeniedHandler;
-    @Autowired
-    private JwtAuthenticationTokenFilter jwtAuthenticationTokenFilter;
+
     @Override
     @Bean
     public AuthenticationManager authenticationManagerBean() throws Exception {
-        return  super.authenticationManagerBean();
-    }
-    @Bean
-    public PasswordEncoder passwordEncoder(){
-        return new BCryptPasswordEncoder();
+        return super.authenticationManagerBean();
     }
 
-    /**
-     *
-     * @param http
-     * @throws Exception
-     */
+    @Autowired
+    private JwtAuthenticationTokenFilter jwtAuthenticationTokenFilter;
+    @Autowired
+    AuthenticationEntryPoint authenticationEntryPoint;
+    @Autowired
+    AccessDeniedHandler accessDeniedHandler;
+
+
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
@@ -55,24 +50,27 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
                 // 对于登录接口 允许匿名访问
                 .antMatchers("/login").anonymous()
-                //个人信息接口必须登录后才能访问
-                .antMatchers("/user/userInfo").authenticated()
-                    //用于测试登陆校验
-                //  .antMatchers("/link/getAllLink").authenticated()
+                //注销接口需要认证才能访问
                 .antMatchers("/logout").authenticated()
+                .antMatchers("/user/userInfo").authenticated()
+//                .antMatchers("/upload").authenticated()
                 // 除上面外的所有请求全部不需要认证即可访问
                 .anyRequest().permitAll();
-        http.logout().disable();//禁用默认退出接口
-        http.addFilterBefore(jwtAuthenticationTokenFilter, UsernamePasswordAuthenticationFilter.class);
-                //允许跨域
-        http.cors();
 
         //配置异常处理器
         http.exceptionHandling()
                 .authenticationEntryPoint(authenticationEntryPoint)
                 .accessDeniedHandler(accessDeniedHandler);
-
+        //关闭默认的注销功能
+        http.logout().disable();
+        //把jwtAuthenticationTokenFilter添加到SpringSecurity的过滤器链中
+        http.addFilterBefore(jwtAuthenticationTokenFilter, UsernamePasswordAuthenticationFilter.class);
+        //允许跨域
+        http.cors();
     }
 
-
+    @Bean
+    public PasswordEncoder passwordEncoder(){
+        return new BCryptPasswordEncoder();
+    }
 }

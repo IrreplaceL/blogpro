@@ -13,5 +13,5 @@ import com.irreplace.domain.entity.domain.ResponseResult;
 public interface BlogLoginService {
     ResponseResult login(User user);
 
-    ResponseResult logout();
+ResponseResult logout();
 }

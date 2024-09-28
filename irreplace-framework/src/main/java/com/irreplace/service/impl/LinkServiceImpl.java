@@ -22,7 +22,7 @@ import java.util.List;
 public class LinkServiceImpl extends ServiceImpl<LinkMapper, Link> implements LinkService {
     @Override
     public ResponseResult getAllLink() {
-        //查询所有审核通过的链接，status为0
+    //查询所有审核通过的链接，status为0
         LambdaQueryWrapper<Link> lambdaQueryWrapper = new LambdaQueryWrapper<>();
         lambdaQueryWrapper.eq(Link::getStatus, SystemConstants.Link_STATUS_NORMAL);
         List<Link> linkList = list(lambdaQueryWrapper);
