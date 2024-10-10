@@ -1,5 +1,6 @@
 package com.irreplace.controller;
 
+import com.irreplace.annotation.SystemLog;
 import com.irreplace.domain.entity.User;
 import com.irreplace.domain.entity.domain.ResponseResult;
 import com.irreplace.service.UserService;
@@ -22,6 +23,7 @@ public class UserController {
         return userService.userInfo();
     }
     @PutMapping("/userInfo")
+    @SystemLog(businessName = "更新用户信息")
     public ResponseResult updateUserInfo(@RequestBody User user){
         return userService.updateUserInfo(user);
     }
