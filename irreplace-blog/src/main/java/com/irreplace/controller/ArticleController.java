@@ -3,10 +3,7 @@ package com.irreplace.controller;
 import com.irreplace.domain.entity.domain.ResponseResult;
 import com.irreplace.service.ArticleService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 
 /**
@@ -32,6 +29,13 @@ public ResponseResult hotArticleList(){
         ResponseResult result = articleService.hotArticleList();
         return result;
     }
+
+    @PutMapping("/updateViewCount/{id}")
+    public ResponseResult updateViewCount(@PathVariable("id") Long id){
+        return articleService.updateViewCount(id);
+
+    }
+
     @GetMapping("/articleList")
     private ResponseResult articleList(Integer pageNum,Integer pageSize,Long
             categoryId){
