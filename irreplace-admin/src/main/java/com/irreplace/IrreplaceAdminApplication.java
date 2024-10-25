@@ -7,8 +7,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
 @MapperScan("com.irreplace.mapper")
-public class BlogAdminApplication {
+public class IrreplaceAdminApplication {
     public static void main(String[] args) {
-        SpringApplication.run(BlogAdminApplication.class, args);
+        SpringApplication.run(IrreplaceAdminApplication.class, args);
     }
 }

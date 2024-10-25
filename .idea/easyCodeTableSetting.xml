@@ -484,11 +484,11 @@
                 </list>
               </option>
               <option name="name" value="IrrTag" />
-              <option name="preName" value="" />
-              <option name="saveModelName" value="" />
+              <option name="preName" value="irr_" />
+              <option name="saveModelName" value="irreplace-framework" />
               <option name="savePackageName" value="" />
-              <option name="savePath" value="" />
-              <option name="templateGroupName" value="" />
+              <option name="savePath" value="./irreplace-framework/src/main/java" />
+              <option name="templateGroupName" value="MybatisPlus" />
             </TableInfoDTO>
           </value>
         </entry>
