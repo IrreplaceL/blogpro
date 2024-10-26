@@ -27,11 +27,11 @@ public class SwaggerConfig {
     }
 
     private ApiInfo apiInfo() {
-        Contact contact = new Contact("团队名", "http://www.my.com",
-                "my@my.com");
+        Contact contact = new Contact("zjj哥牛逼", "http://www.my.com",
+                "lirreplace@gmail.com");
         return new ApiInfoBuilder()
-                .title("文档标题")
-                .description("文档描述")
+                .title("后台接口文档")
+                .description("依赖swagger搭建，查阅接口以及测试接口获取响应")
                 .contact(contact) // 联系方式
                 .version("1.1.0") // 版本
                 .build();
